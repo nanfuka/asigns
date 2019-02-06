@@ -1,0 +1,176 @@
+body {
+    height: auto;
+    width: auto;
+}
+
+.flex-container {
+    display: flex;
+    /* background-color: blueviolet; */
+    background: #648880;
+    background: linear-gradient(to bottom, #f6f1d3, #648880 85%, #293f50);
+    justify-content: center;
+
+    /* text-align: center; */
+
+
+}
+
+.welcome img {
+    /* padding-left:1%; */
+    margin-left: 10%;
+    /* padding-left: 5%; */
+}
+
+.col3 {
+    padding-left: 5%;
+    font-size: 150%;
+    font-family: monospace;
+}
+
+.desc {
+
+    /* width:30%; */
+    margin-top: 1%;
+    float: left;
+    font-size: 150%;
+    font-family: monospace;
+}
+
+.logonotes {
+    font-size: 150%;
+    font-family: monospace;
+}
+
+fieldset {
+    width: 50%;
+    text-align: center;
+    /* margin: 2%; */
+}
+
+.main img {
+    text-align: center;
+}
+
+.flex-containerss {
+    display: flex;
+    font-family: monospace;
+    background: linear-gradient(to bottom, #f6f1d3, #648880 85%, #293f50);
+}
+
+.flex-containerss h1 {
+    padding-left: 0%;
+    color: rgb(82, 9, 9);
+    font-size: 300%;
+    /* background-image: url("/images/pray.jpg"); */
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+
+}
+
+.row2 {
+    display: flex;
+
+}
+
+
+.row2-col2 {
+    width: 35%;
+    margin-left: 20%;
+    margin-top: 1%;
+
+}
+
+.row2-col1 {
+    width: 30%;
+    height: 50%;
+    margin-left: 10%;
+    margin-top: 1%;
+
+
+
+}
+
+.login-container {
+    padding: 10%;
+    display: flex;
+    background-color: rgb(240, 226, 226);
+    font-size: 120%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.login-container button {
+    width: 200%;
+    height: 12%;
+    background-color: rgb(122, 12, 26);
+    color: bisque;
+    font-size: 120%;
+    cursor: pointer;
+    border: none;
+
+}
+
+.login-container input {
+    width: 120%;
+}
+
+.login-container h1 {
+    text-align: center;
+}
+
+.values input {
+
+    margin-top: 8%;
+    display: block;
+    margin-left: 20%;
+}
+
+/* 
+.flex-container div {
+    /* background-color: #f1f1f1; */
+/* margin-top: 5%;
+    margin-left: 10%;
+    color: rgb(245, 243, 243);
+    flex-flow: row wrap; */
+/* padding: 20px;
+    font-size: 30px; */
+/* }
+.responsive {
+    width: 100%;
+    height: auto; */
+/* }
+.sub{
+    display: block;
+}
+.flex-container button{
+width: 200%;
+height:12%;
+background-color: rgb(122, 12, 26);
+color: bisque;
+font-size: 120%;
+cursor: pointer;
+border: none;
+} */
+/* .icon {
+display: flex;
+  }
+
+.flex-containers {
+    display: flex;
+    background-color: blueviolet;
+    justify-content: left; */
+
+
+/* align-content: space-around; */
+
+/* .sub{
+    font-size: 200%;
+}
+.welcome{
+    font-size: %; */
+/* } */
