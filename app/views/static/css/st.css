@@ -1,0 +1,67 @@
+.flex-containerss{
+    display: flex;
+    background-color: aquamarine;
+    align-content: center;
+}
+.flex-containerss a{
+    float: right;
+    padding-left: 40%; 
+    /* padding-top: 2.5%; */
+    text-decoration-line: none;
+    /* font-size: 150%; */
+    color: black;
+}
+.logs{
+  display: flex;
+  background-color: blueviolet;  
+  width: 50%;
+  align-content: center;
+  justify-content: center;
+  margin-left: 25%;
+  margin-top: 5%;
+  font-size: 120%;
+
+}
+h1{
+    text-align: center;
+}
+
+.keys{
+    display: block;
+    margin: 5%;
+
+}
+.keys p{
+    margin-top: 10%;
+    padding-top: 5%;
+    color:white;
+
+}
+.values{
+    display: block;
+    margin: 0%;
+    width: 50%;
+    padding-top: 24%;
+}
+.values input{
+    
+    margin: 10%;
+    width: 160%;
+    height: 50%;
+}
+button{
+    width: 200%;
+    height: 150%;
+    color: aliceblue;
+    background-color: cornflowerblue;
+    font-size: 150%;
+    
+}
+.response{
+    display: flex;
+    justify-content: center;
+    font-family: monospace;
+    color: crimson;
+    /* float: center; */
+    padding-top: 5%;
+}

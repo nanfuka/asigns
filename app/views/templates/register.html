@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CHURCH-APP</title>
+    <link rel="stylesheet" href="../static/css/st.css">
+</head>
+
+<body>
+    <div class="flex-containerss">
+        <img src="../static/images/logo.jpg" width="100" height="100">
+        <h1>My Smart Church Application</h1>
+        <a href ="{{ url_for('index') }}"><h1>home</h1></a>
+    </div>
+    <h1>LOGIN-ADMIN</h1>
+    <div class="logs">
+
+        <div class="keys">
+            <p>USERNAME</p>
+            <p>PASSWORD</p>
+        </div>
+
+        <form action="" method="post">
+            <div class="values">
+
+                <input type="text" placeholder="Username" name="username" value="{{
+                    request.form.username }}"><br>
+                <input type="password" placeholder="password" name="password" value="{{
+                        request.form.password }}">
+                <p><button type="submit" class="adminlog">submit</button></p>
+            </div>
+        </form>
+    </div>
+        <div class="response">
+            {% if error %}
+            <p class="error"><strong>Error:</strong> {{ error }}</p>
+            {% endif %}
+        </div>
+       
