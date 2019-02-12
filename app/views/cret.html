@@ -1,0 +1,48 @@
+<table id="people" class='table table-striped'>
+        <thead>
+            <th>id</th>
+            <th>username</th>
+            <th>password</th>
+
+        </thead>
+        <tbody></tbody>
+    </table>
+
+<script>
+var Person = function Person(id, username,password) {
+this.id         = id;
+this.username       = username;
+this.password       = password;
+
+};
+var myObj, i, x = "";
+myObj = {
+  "name":"John",
+  "age":30,
+  "cars": "Ford"
+};
+
+for (i in myObj) {
+  x += myObj[i] + "<br>";
+}
+document.getElementById("demo").innerHTML = x;
+var myObj = [{'userid': 2, 'username': 'mable', 'password': 'gfhfg'}]
+for (i in myObj) {
+  x += myObj[i];
+}
+var data = [
+new Person( i.userid, x.username, x.password )
+
+];
+var output = document.querySelector('#people tbody');
+data.forEach(function (person) {
+var row = document.createElement('tr');
+['id', 'username', 'password'].forEach(function (prop) {
+    var td = document.createElement('td');
+    td.appendChild(document.createTextNode(person[prop]));
+    row.appendChild(td);
+});
+output.appendChild(row);
+});
+
+</script>

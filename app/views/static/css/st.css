@@ -65,3 +65,6 @@ button{
     /* float: center; */
     padding-top: 5%;
 }
+.content img{
+    width: 2px;
+}

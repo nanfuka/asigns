@@ -19,15 +19,13 @@ class DatabaseConnection:
         
     def create_users_table(self):
         create_users_table = "CREATE TABLE IF NOT EXISTS users\
-        (userId SERIAL NOT NULL PRIMARY KEY, username VARCHAR NOT NULL, \
+        (userId SERIAL NOT NULL PRIMARY KEY,  username VARCHAR NOT NULL, \
         password VARCHAR NOT NULL);"
         self.cursor.execute(create_users_table)
         self.connection.commit()
     
 
-    def create_member(self, 
-                    username,
-                    password):
+    def create_member(self, username, password):
         query = """ INSERT INTO users (username, password) VALUES ('{}', '{}') 
                 RETURNING userid, username, password;"""\
                 .format(username, password)
@@ -35,12 +33,19 @@ class DatabaseConnection:
         return self.cursor.fetchone()
 
     def get_members(self):
-        query = "SELECT * FROM incidents"
+        query = "SELECT * FROM users"
         self.cursor.execute(query)
         return self.cursor.fetchall()
 
 
-
+    def get_images(self):
+        query = "SELECT images FROM users"
+        self.cursor.execute(query)
+        return self.cursor.fetchall()
+    def get_all_user_details(password):
+        query = "SELECT  FROM users WHERE password = '{}'".formart(password)
+        self.cursor.execute(query)
+        return self.cursor.fetchone()
 
 if __name__ == '__main__':
     db_name = DatabaseConnection()

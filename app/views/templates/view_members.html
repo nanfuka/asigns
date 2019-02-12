@@ -12,29 +12,25 @@
         <h1>My Smart Church Application</h1>
         <a href ="{{ url_for('index') }}"><h1>home</h1></a>
     </div>
-    <h1>CHURCH MEMBERS</h1>
-    <p>members:{{members}}</p>
-    <!-- <div class="logs">
+<div >
+    {% for member in members %}
+    <img src="../static/images/{{member.username}}.jpeg"/> <br>
+    <p class = "content" onclick = "Search()">{{member.password}}</p>
+  {% endfor %}   
 
-        <div class="keys">
-            <p>USERNAME</p>
-            <p>PASSWORD</p>
-        </div>
+</div>
+<div class = "research"></div>
 
-        <form action="" method="post">
-            <div class="values">
-
-                <input type="text" placeholder="Username" name="username" value="{{
-                    request.form.username }}"><br>
-                <input type="password" placeholder="password" name="password" value="{{
-                        request.form.password }}">
-                <p><button type="submit" class="adminlog">submit</button></p>
-            </div>
-        </form>
-    </div>
-        <div class="response">
-            {% if error %}
-            <p class="error"><strong>Error:</strong> {{ error }}</p>
-            {% endif %}
-        </div> -->
-       
+<script>
+function Search(){
+    // Replace ./data.json with your JSON feed
+fetch('http://127.0.0.1:5000/fetch_user').then(response => {
+  return response.json();
+}).then(data => {
+  // Work with JSON data here
+  console.log(data);
+}).catch(err => {
+  // Do something for an error here
+});
+}
+</script>
