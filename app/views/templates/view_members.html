@@ -1,36 +1,51 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>CHURCH-APP</title>
-    <link rel="stylesheet" href="../static/css/st.css">
-</head>
-
-<body>
-    <div class="flex-containerss">
-        <img src="../static/images/logo.jpg" width="100" height="100">
-        <h1>My Smart Church Application</h1>
-        <a href ="{{ url_for('index') }}"><h1>home</h1></a>
-    </div>
-<div >
-    {% for member in members %}
-    <img src="../static/images/{{member.username}}.jpeg"/> <br>
-    <p class = "content" onclick = "Search()">{{member.password}}</p>
-  {% endfor %}   
-
-</div>
-<div class = "research"></div>
+<input type="text" id="ajax" list="json-datalist" placeholder="e.g. datalist">
+<datalist id="json-datalist"></datalist>
+<button id = "postData">view profile</button>
 
 <script>
-function Search(){
-    // Replace ./data.json with your JSON feed
-fetch('http://127.0.0.1:5000/fetch_user').then(response => {
-  return response.json();
-}).then(data => {
-  // Work with JSON data here
-  console.log(data);
-}).catch(err => {
-  // Do something for an error here
-});
-}
+var dataList = document.getElementById('json-datalist');
+var input = document.getElementById('ajax');
+var request = new XMLHttpRequest();
+
+request.onreadystatechange = function(response) {
+  if (request.readyState === 4) {
+    if (request.status === 200) {
+
+      var jsonOptions = JSON.parse(request.responseText);
+
+      jsonOptions.forEach(function(item) {
+
+        var option = document.createElement('option');
+        option.value = item.username;
+        dataList.appendChild(option);
+
+      });
+
+    } else {
+      console.log("Failed to load datalist options");
+    }
+  }
+};
+
+request.open('GET', 'http://127.0.0.1:5000/fetch_user', true);
+request.send();
+
+
+document.getElementById('postData').addEventListener('submit', postData);
+function postData(event) {
+            event.preventDefault();
+
+            let username = document.getElementById('ajax').value;
+            // let body = document.getElementById('body').value;
+
+            // title || body === "" ?
+            // alert('Please Enter all details') :
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                headers: new Headers(),
+                body: JSON.stringify({ title, body })
+            }).then((res) => res.json())
+                .then((data) => alert('Data Sent'))
+                .catch((err) => console.log(err))
+        }
 </script>

@@ -11,24 +11,22 @@ class DatabaseConnection:
             dbname=self.db_name, user='postgres', host='localhost',
             password='test', port=5432)
         self.connection.autocommit = True
-        self.cursor = self.connection.cursor(
-            cursor_factory=psycopg2.extras.RealDictCursor)
+        self.cursor = self.connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 
         print('Connected to the database successfully.')
         print(self.db_name)
         
     def create_users_table(self):
         create_users_table = "CREATE TABLE IF NOT EXISTS users\
-        (userId SERIAL NOT NULL PRIMARY KEY,  username VARCHAR NOT NULL, \
-        password VARCHAR NOT NULL);"
+        (userId SERIAL NOT NULL PRIMARY KEY, firstname VARCHAR NOT NULL, lastname VARCHAR NOT NULL,username VARCHAR NOT NULL, gender VARCHAR NOT NULL, dateofbirth VARCHAR NOT NULL, maritalstatus VARCHAR NOT NULL);"
         self.cursor.execute(create_users_table)
         self.connection.commit()
     
 
-    def create_member(self, username, password):
-        query = """ INSERT INTO users (username, password) VALUES ('{}', '{}') 
-                RETURNING userid, username, password;"""\
-                .format(username, password)
+    def create_member(self, firstname, lastname, username, gender, dateofbirth, maritalstatus):
+        query = """ INSERT INTO users (firstname, lastname, username, gender, dateofbirth, maritalstatus) VALUES ('{}', '{}', '{}', '{}','{}', '{}') 
+                RETURNING userid, firstname, lastname, username, gender, dateofbirth;"""\
+                .format(firstname, lastname, username, gender, dateofbirth, maritalstatus)
         self.cursor.execute(query)
         return self.cursor.fetchone()
 

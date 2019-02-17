@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/LeaVerou/awesomplete/gh-pages/awesomplete.css">
+  </head>
+  <body>
+        <div id="output" ></div>
+
+<script>
+        fetch('http://127.0.0.1:5000/fetch_user')
+        .then((res) => res.json())
+        .then((data) => {
+            
+            console.log(data);
+            let output = `<h2>CHURCH MEMBERS</h2>`
+            data.forEach(function (user) {
+                output += 
+                    `
+                        <ul>
+                          
+                       
+                         
+                        <li>${user.lastname}</li>
+                        </ul>`;
+
+
+                    
+                        document.getElementById('count').innerHTML = output;
+                    </script>
+
+// 		<!-- <p>
+//                 <input id="countries" placeholder="Enter a country"/>
+//             <div id = "baba">{{data}}</div>
+
+//              <input list="browsers">
+// <datalist id="browsers">
+// {% for item in data %}
+   
+//     <option id = "values"  value={{ item }} >
+
+// {% endfor %} 
+// 				Type name of a country to see the demo in action.
+// 			  </p>
+// 			  <input id="countries" placeholder="Enter a country"/>
+
+// 	<script src="https://cdn.rawgit.com/LeaVerou/awesomplete/gh-pages/awesomplete.min.js"></script>
+//     <script>
+//             var input = document.getElementById("countries");
+// 			var awesomplete = new Awesomplete(input, {
+// 			  minChars: 1, 
+// 			  autoFirst: true,
+// 			  maxItems: 10
+//             });
+//             var inpt = document.getElementById('baba').innerHTML;
+//             awesomplete = inpt
+//         </script>
+//   </body> -->
+
+
+// <!-- <input list="browsers">
+// <datalist id="browsers">
+// {% for item in data %}
+   
+//     <option id = "values"  value={{ item }} >
+
+// {% endfor %}
+
+// </script> -->

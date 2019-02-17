@@ -18,7 +18,7 @@
   align-content: center;
   justify-content: center;
   margin-left: 25%;
-  margin-top: 5%;
+  /* margin-top: 5%; */
   font-size: 120%;
 
 }
@@ -32,8 +32,8 @@ h1{
 
 }
 .keys p{
-    margin-top: 10%;
-    padding-top: 5%;
+    margin-top: 0%;
+    /* padding-top: 5%; */
     color:white;
 
 }
@@ -41,13 +41,17 @@ h1{
     display: block;
     margin: 0%;
     width: 50%;
-    padding-top: 24%;
+    padding-top: 12%;
+}
+.values{
+    margin-top: 0%;
 }
 .values input{
+margin-bottom: 11%;
     
-    margin: 10%;
+    /* margin: 10%; */
     width: 160%;
-    height: 50%;
+    height: 70%;
 }
 button{
     width: 200%;
@@ -67,4 +71,7 @@ button{
 }
 .content img{
     width: 2px;
+}
+h3{
+    text-align: center;
 }

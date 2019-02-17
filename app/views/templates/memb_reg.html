@@ -10,35 +10,83 @@
     <div class="flex-containerss">
         <img src="../static/images/logo.jpg" width="100" height="100">
         <h1>My Smart Church Application</h1>
-        <a href ="{{ url_for('index') }}"><h1>home</h1></a>
-        <a href ="{{ url_for('view_members') }}"><h1>view all members</h1></a>
+        <a href="{{ url_for('index') }}">
+            <h1>HOME</h1>
+        </a>
+        <a href="{{ url_for('view_member') }}">
+            <h1>view all members</h1>
+        </a>
     </div>
     <h1>CHURCH MEMBERSHIP REGISTRATION</h1>
-    <img src="C:\photos\Tom.jpg" alt="Sun"></img>
+
+
+
     <div class="logs">
-          
-            
+
+
         <div class="keys">
-                
+
+            <p>FIRSTNAME</p>
+            <p>LASTNAME</p>
             <p>USERNAME</p>
-            <p>PASSWORD</p>
+            <p>GENDER</p>
+            <p>DATE OF BIRTH</p>
+            <p>MARITAL STATUS</p>
+
         </div>
 
         <form action="" method="post">
             <div class="values">
 
-
+                <input type="text" placeholder="firstname" name="firstname" value="{{
+                        request.form.firstname}}"><br>
+                <input type="text" placeholder="lastname" name="lastname" value="{{
+                            request.form.lastname }}"><br>
                 <input type="text" placeholder="Username" name="username" value="{{
                     request.form.username }}"><br>
-                <input type="password" placeholder="password" name="password" value="{{
-                        request.form.password }}">
-                <p><button type="submit" class="adminlog">submit</button></p>
-            </div>
-        </form>
-    </div>
-        <div class="response">
-            {% if error %}
-            <p class="error"><strong>Error:</strong> {{ error }}</p>
-            {% endif %}
-        </div>
+                <input type="text" placeholder="gender" name="gender" value="{{
+                        request.form.gender }}"><br>
+                <input type="text" placeholder="dateofbirth" name="dateofbirth" value="{{
+                            request.form.dateofbirth}}"><br>
+
+                <input type="text" placeholder="maritalstatus" name="maritalstatus" value="{{
+                                request.form.maritalstatus }}"><br>
+                <!-- <form method=post enctype=multipart/form-data> -->
+                <!-- <p><input type=file name=file> -->
+                    <!-- <form method=post enctype=multipart/form-data>
+                        <p><input type=file name=file>
+                           <input type=submit value=Upload>
+                      </form> -->
+
        
+
+        <p><button type="submit" class="adminlog" id = "postData">submit</button></p>
+    </div>
+    </form>
+    </div>
+
+    <div class="response">
+        {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}</p>
+        {% endif %}
+    </div>
+    <script>
+    document.getElementById('postData').addEventListener('submit', postData);
+    function postData(event) {
+            event.preventDefault();
+
+            let title = document.getElementById('title').value;
+            let body = document.getElementById('body').value;
+
+            title || body === "" ?
+            alert('Please Enter all details') :
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                headers: new Headers(),
+                body: JSON.stringify({ title, body })
+            }).then((res) => res.json())
+                .then((data) => alert('Data Sent'))
+                .catch((err) => console.log(err))
+        }
+    </script>
+    </script>
