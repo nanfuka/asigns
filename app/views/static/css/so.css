@@ -1,0 +1,89 @@
+
+    /* .values input{
+    width: 10%; */
+/* } */
+#response{ 
+    /* display: flex; */
+    /* align-items: center;
+    justify-content: center;  */
+    /* font-family: monospace;
+    font-size: 150%;  */
+
+    display: none;
+     
+} 
+.flex-containerss{
+    display: flex;
+    background-color: aquamarine;
+    align-content: center;
+}
+.flex-containerss a{
+    float: right;
+    padding-left: 40%; 
+    /* padding-top: 2.5%; */
+    text-decoration-line: none;
+    /* font-size: 150%; */
+    color: black;
+}
+body{
+    background: linear-gradient(to bottom, #f6f1d3, #648880 85%, #293f50);
+    align-items: center; 
+}
+.row2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 150%;
+    margin-top: 5%;
+    
+}
+.row2 input{
+    margin: 10%;
+    width: 150%;
+    border-block-end-style: groove;
+    border-bottom-color: rgb(148, 124, 124);
+  
+
+}
+.row2 button{
+    margin-left: 200%;
+    font-family: monospace;
+    background-color: rgb(21, 2, 39);
+    color: white;
+    font-style: oblique;
+    font-size: 100%;
+}
+
+.pic{
+    float:left;
+    margin-right: 0;
+    /* margin-left: 20%; */
+}
+.des{
+    /* display: block; */
+    
+    /* margin-right: 50%; */
+    display: inline; 
+    margin-left: 10%;
+}
+.des div{
+    padding: 5%;
+}
+.error{
+    display: inline;
+}
+.errors{
+    display: inline;
+}
+.do{
+    display:block;
+    margin-right: 70%;
+}
+.row3{
+    margin-left: 0%;
+}
+
+
+
+

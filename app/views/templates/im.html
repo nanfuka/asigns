@@ -1,30 +1,80 @@
-<!doctype html>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>CHURCH-APP</title>
-    <link rel="stylesheet" href="../static/css/st.css">
+    <!-- <link rel="stylesheet" href="../static/css/st.css"> -->
 </head>
+<style>
+    body{
+        text-align: center;
+    }
+    .nav1{
+        
+        display: flex;
+        justify-content: space-evenly;
+        background-color: blue;
+        color: white;
+    }
+    .nav1 a{
+        float: right;
+        text-decoration: none;
+        color: white;
+    }
+    .nav2{
+        text-decoration: none;
+        background-color: rgb(194, 194, 247);
+        color: black;
+    }
+    .response{
+        color: rgb(250, 4, 4)
+    }
+.images{
+    font-size: 120%;
+    text-align: center;
+    margin-top: 10%;
+    color: blue;
 
-<body>
-    <div class="flex-containerss">
-        <img src="../static/images/logo.jpg" width="100" height="100">
-        <h1>My Smart Church Application</h1>
-        <a href="{{ url_for('index') }}">
-            <h1>HOME</h1>
-        </a>
-        <a href="{{ url_for('view_members') }}">
-            <h1>view all members</h1>
-        </a>
-    </div>
+}
+input{
+    font-size: 120%;
+}
+</style>
+
+        <body>
+                <div class="nav1">
+                    <div><img src="../static/images/logo.jpg" width="100" height="100"></div>
+                    <div>
+                        <h1>My Smart Church Application</h1>
+                    </div>
+                    <div><a href="{{ url_for('index') }}">
+                            <h1>home</h1>
+                        </a></div>
+                    <div><a href="{{ url_for('login') }}">
+                            <h1>logout</h1>
+                        </a></div>
+                </div>
     <h1>CHURCH MEMBERSHIP REGISTRATION</h1>
 
-<title>UPLOAD CHURCH MEMBERS IMAGE.</title>
-<h1>all images shoudl be in jpg form</h1>
+<div class = "images"
+<title>UPLOAD CHURCH MEMBERS IMAGE.</title><br>
+<h> kindly note that all images shoud be in jpg form</h>
 <form method=post enctype=multipart/form-data>
   <p><input type=file name=file>
      <input type=submit value=Upload>
 </form>
+</div>
 
-    <a href ="{{ url_for('signup') }}">NEXT</a>
+<div class="response">
+        {% if error %}
+        <p class="error"><strong><b>!!!!!!!!!!Error:</strong> {{ error }}</p>
+        {% endif %}
+    </div>
+
+    <div class="response">
+            {% if data %}
+            <p class="error"><strong><b>success:</strong> {{ data }}</p>
+            {% endif %}
+        </div>
+<!-- 
+ <P> YOU ARE NOW FULLY REGISTERED WITH MOUNT OLIVES CHURCH</P> -->

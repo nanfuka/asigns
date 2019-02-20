@@ -1,0 +1,45 @@
+body{
+    background: linear-gradient(to bottom, #f6f1d3, #648880 85%, #293f50);
+    align-items: center; 
+}
+.logs{
+    display: flex;
+    background-color: rgb(24, 14, 1);
+    justify-content: space-evenly;
+    /* align-items: center; */
+    text-align: center;
+    font-family: monospace;
+    font-size: 200%;
+    width: 30%;
+    float: center;
+    margin-left: 36%;
+    color: white;
+}
+h1{
+    text-align: center;
+    margin-top: 15%;
+
+}
+.mold{
+    justify-content: center;
+}
+.values input{
+    margin-top: 16%;
+    padding-top: 5%;
+
+}
+#username{
+    /* margin-top: 50%; */
+}
+button{
+    width: 100%;
+    
+    color: azure;
+    background-color: rebeccapurple;
+    font-size: 100%;
+    border-block-end-style: outset;
+}
+.response{
+    text-align: center;
+    color: aliceblue
+}

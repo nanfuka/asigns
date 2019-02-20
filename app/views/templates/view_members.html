@@ -1,51 +1,151 @@
-<input type="text" id="ajax" list="json-datalist" placeholder="e.g. datalist">
-<datalist id="json-datalist"></datalist>
-<button id = "postData">view profile</button>
+<!DOCTYPE html>
+<html>
 
-<script>
-var dataList = document.getElementById('json-datalist');
-var input = document.getElementById('ajax');
-var request = new XMLHttpRequest();
+<head>
+    <title>CHURCH-APP</title>
+    <!-- <link rel="stylesheet" href="../static/css/so.css"> -->
+</head>
+<style>
+    body{
+    text-align: center;
+}
+.nav1{
+    
+    display: flex;
+    justify-content: space-evenly;
+    background-color: blue;
+    color: white;
+}
+.nav1 a{
+    float: right;
+    text-decoration: none;
+    color: white;
+}
+.nav2{
+    text-decoration: none;
+    background-color: rgb(194, 194, 247);
+    color: black;
+}
 
-request.onreadystatechange = function(response) {
-  if (request.readyState === 4) {
-    if (request.status === 200) {
+.nav3{
+    text-decoration: none;
+    background-color: rgb(120, 120, 177);
+    color: black;
+}
+.nav2 a {
+    text-decoration: none;
+    color: black;
+}
+.nav3 a {
+    text-decoration: none;
+    color: black;
+}
+.nav4{
+    display:flex;
+    justify-content:flex-start; 
+    font-size: 200%;
+   
+    font-family: monospace;
+    margin-top: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
 
-      var jsonOptions = JSON.parse(request.responseText);
+}
+.nav4 input{
+    width: 150%; 
+    border-block-end-style: inset;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: 91%; 
+    text-align: center;
+    font-size: 100%;
+    
+}
+.nav4 button{
+    margin-left: 300%;
+    /* width: 200%;
+    height: 130%; */ 
+    font-size: 130%; 
+    font-family: monospace;
+}
+</style>
 
-      jsonOptions.forEach(function(item) {
+<body>
+    <div class="nav1">
+        <div><img src="../static/images/logo.jpg" width="100" height="100"></div>
+        <div>
+            <h1>My Smart Church Application</h1>
+        </div>
+        <div><a href="{{ url_for('index') }}">
+                <h1>home</h1>
+            </a></div>
+        <div><a href="{{ url_for('login') }}">
+                <h1>logout</h1>
+            </a></div>
+    </div>
+    <div class="nav2">
+        <a href="{{ url_for('signup') }}">
+            <h1> click here to register new member</h1>
+        </a>
+    </div>
+    <div class="nav3">
 
-        var option = document.createElement('option');
-        option.value = item.username;
-        dataList.appendChild(option);
+        <a href="{{ url_for('index') }}">
+            <h1>view all registered members</h1>
+        </a>
+    </div>
+    <div class="response">
+            {% if error %}
+            <p class="error"><strong><b>!!!!!!!!!!Error:</strong> {{ error }}</p>
+            {% endif %}
+        </div>
+    <form action="" method="post">
+        <div class="nav4">
+            <!-- <div class="row2">
+                <div class="values"> -->
+            <div>Search for member</div>
+            <div><input type="text" id="ajax" list="json-datalist" placeholder="enter name of member" name="username"
+                    value="{{
+                    request.form.username}}"></div>
+            <datalist id="json-datalist"></datalist>
 
-      });
-
-    } else {
-      console.log("Failed to load datalist options");
-    }
-  }
-};
-
-request.open('GET', 'http://127.0.0.1:5000/fetch_user', true);
-request.send();
+            <div class="row22"><button type="submit" class="adminlog" id="postData">view</button></div>
 
 
-document.getElementById('postData').addEventListener('submit', postData);
-function postData(event) {
-            event.preventDefault();
+        </div>
+        </div>
+    </form>
+    </nav4>
+<div class = "reply"></div>
 
-            let username = document.getElementById('ajax').value;
-            // let body = document.getElementById('body').value;
 
-            // title || body === "" ?
-            // alert('Please Enter all details') :
-            fetch('https://jsonplaceholder.typicode.com/posts', {
-                method: 'POST',
-                headers: new Headers(),
-                body: JSON.stringify({ title, body })
-            }).then((res) => res.json())
-                .then((data) => alert('Data Sent'))
-                .catch((err) => console.log(err))
-        }
-</script>
+
+    <script>
+        var dataList = document.getElementById('json-datalist');
+        var input = document.getElementById('ajax');
+        var request = new XMLHttpRequest();
+
+        request.onreadystatechange = function (response) {
+            if (request.readyState === 4) {
+                if (request.status === 200) {
+
+                    var jsonOptions = JSON.parse(request.responseText);
+
+                    jsonOptions.forEach(function (item) {
+
+                        var option = document.createElement('option');
+                        option.value = item.username;
+                        dataList.appendChild(option);
+
+                    });
+
+                } else {
+                    console.log("Failed to load datalist options");
+                    document.getElementById("reply").innerHTML = "we have no such users on our system"
+                }
+            }
+        };
+
+        request.open('GET', 'http://127.0.0.1:5000/fetch_user', true);
+        request.send();
+    </script>

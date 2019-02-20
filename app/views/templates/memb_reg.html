@@ -3,90 +3,239 @@
 
 <head>
     <title>CHURCH-APP</title>
-    <link rel="stylesheet" href="../static/css/st.css">
+    <!-- <link rel="stylesheet" href="../static/css/st.css"> -->
 </head>
+<style>
+    body{
+        text-align: center;
+    }
+    .nav1{
+        
+        display: flex;
+        justify-content: space-evenly;
+        background-color: blue;
+        color: white;
+    }
+    .nav1 a{
+        float: right;
+        text-decoration: none;
+        color: white;
+    }
+    .nav2{
+        text-decoration: none;
+        background-color: rgb(194, 194, 247);
+        color: black;
+    }
+    .logs{
+        display: flex;
+        justify-content: center;
+    }
+    .values input{
+        display: block;
+        margin-top: 20%;
+        margin-left: 11%;
+        font-size: 120%;
+        text-align: center;
+    }
+    .keys{
+        margin-top: 5%;
+        font-size: 120%;
+    }
+    .keys p{
+        margin-bottom: 33.5%; 
+        
+        text-align-last: left;
+        display: block;
+    }
+    fieldset{
+        width: 40%;
+        margin-left: 28%;
+    }
+    button{
+        font-size: 120%;
+        border: darkred;
+
+        background-color: aqua;
+        
+    }
+    .response{
+        color: rgb(253, 5, 5);
+        /* background-color: rgb(148, 146, 146); */
+        font-size: 120%;
+        
+    }
+    .myButton {
+	-moz-box-shadow: 3px 4px 0px 0px #8a2a21;
+	-webkit-box-shadow: 3px 4px 0px 0px #8a2a21;
+	box-shadow: 3px 4px 0px 0px #8a2a21;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24437));
+	background:-moz-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+	background:-webkit-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+	background:-o-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+	background:-ms-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+	background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24437',GradientType=0);
+	background-color:#c62d1f;
+	-moz-border-radius:18px;
+	-webkit-border-radius:18px;
+	border-radius:18px;
+	border:1px solid #d02718;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #810e05;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f24437), color-stop(1, #c62d1f));
+	background:-moz-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+	background:-webkit-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+	background:-o-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+	background:-ms-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+	background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24437', endColorstr='#c62d1f',GradientType=0);
+	background-color:#f24437;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.subbutton {
+	background-color:#44c767;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.subbutton:hover {
+	background-color:#5cbf2a;
+}
+.subbutton:active {
+	position:relative;
+	top:1px;
+}
+
+    </style>
 
 <body>
-    <div class="flex-containerss">
-        <img src="../static/images/logo.jpg" width="100" height="100">
-        <h1>My Smart Church Application</h1>
-        <a href="{{ url_for('index') }}">
-            <h1>HOME</h1>
-        </a>
-        <a href="{{ url_for('view_member') }}">
-            <h1>view all members</h1>
-        </a>
-    </div>
-    <h1>CHURCH MEMBERSHIP REGISTRATION</h1>
-
-
-
-    <div class="logs">
-
-
-        <div class="keys">
-
-            <p>FIRSTNAME</p>
-            <p>LASTNAME</p>
-            <p>USERNAME</p>
-            <p>GENDER</p>
-            <p>DATE OF BIRTH</p>
-            <p>MARITAL STATUS</p>
-
+    <div class="nav1">
+        <div><img src="../static/images/logo.jpg" width="100" height="100"></div>
+        <div>
+            <h1>My Smart Church Application</h1>
         </div>
+        <div><a href="{{ url_for('index') }}">
+                <h1>home</h1>
+            </a></div>
+        <div><a href="{{ url_for('login') }}">
+                <h1>logout</h1>
+            </a></div>
+    </div>
+    <h2><a href="{{ url_for('member_table') }}"> <button class="myButton">view registered members</button></a></h2>
+    <h1>Fill in the form below to register a new member</h1>
 
-        <form action="" method="post">
-            <div class="values">
+    <div class="response">
+        {% if error %}
+        <p class="error"><strong><b>!!!!!!!!!!Error:</strong> {{ error }}</p>
+        {% endif %}
+    </div>
+    <fieldset>
+        <p>BIO-DATA INFORMATION</p>
+        <div class="logs">
 
-                <input type="text" placeholder="firstname" name="firstname" value="{{
-                        request.form.firstname}}"><br>
-                <input type="text" placeholder="lastname" name="lastname" value="{{
-                            request.form.lastname }}"><br>
-                <input type="text" placeholder="Username" name="username" value="{{
-                    request.form.username }}"><br>
-                <input type="text" placeholder="gender" name="gender" value="{{
-                        request.form.gender }}"><br>
-                <input type="text" placeholder="dateofbirth" name="dateofbirth" value="{{
-                            request.form.dateofbirth}}"><br>
 
-                <input type="text" placeholder="maritalstatus" name="maritalstatus" value="{{
-                                request.form.maritalstatus }}"><br>
-                <!-- <form method=post enctype=multipart/form-data> -->
-                <!-- <p><input type=file name=file> -->
-                    <!-- <form method=post enctype=multipart/form-data>
-                        <p><input type=file name=file>
-                           <input type=submit value=Upload>
-                      </form> -->
 
-       
+            <div class="keys">
 
-        <p><button type="submit" class="adminlog" id = "postData">submit</button></p>
+                <p><b>FIRSTNAME</p>
+                <p><b>LASTNAME</p>
+                <p><b>USERNAME</p>
+                <p><b>GENDER</p>
+                <p><b>DATE OF BIRTH</p>
+                <p><b>MARITAL STATUS</p>
+                <!-- church family and fellowship-->
+                <p><b>Church Family</p>
+                <p><b>Fellowship Group</p>
+                <p><b>leadershiprole</p>
+                <!-- education and proffession -->
+                <p><b>Highest Level of Education</p>
+                <p><b>Profession</p>
+                <p><b>Occupation</p>
+                <p><b>GENDER</p>
+                <p><b>DATE OF BIRTH</p>
+                <p><b>MARITAL STATUS</p>
+
+
+            </div>
+
+            <P>EDUCATION AND PROFFESSION</P>
+            Highest Level of Education:<br>
+            <input type="text" name="highestlevelofeducation"><br>
+            Profession:<br>
+            <input type="text" name="profession"><br>
+            Occupation:<br>
+            <input type="text" name="occupation"><br>
+            Place of Work:<br>
+            <input type="text" name="placeofwork"><br>
+            <P>ADDRESS AND CONTACT</P>
+            Place of Residence:<br>
+            <input type="text" name="placeofresidence"><br>
+            Phone Contact:<br>
+            <input type="text" name="phonecontact"><br>
+            Email Address:<br>
+            <input type="text" name="emailaddress"><br>
+            <P>BAPTISM</P>
+            Date of Baptism:<br>
+            <input type="text" name="dateofbaptism"><br>
+            Place of Baptism:<br>
+            <input type="text" name="placeofbaptism"><br>
+            Name of Pastor who Baptised:<br>
+            <input type="text" name="name_of_pastor_who Baptised"><br>
+            Former Religion:<br>
+            <input type="text" name="former_religion"><br>
+            Image url:<br>
+            <input type="text" name="image_url"><br>
+            </tr>
+
+
+
+            <form action="" method="post">
+                <div class="values">
+
+                    <input type="text" placeholder="firstname" name="firstname" value="{{
+                        request.form.firstname}}">
+
+                    <input type="text" placeholder="lastname" name="lastname" value="{{
+                            request.form.lastname }}">
+                    <input type="text" placeholder="Username" name="username" value="{{
+                    request.form.username }}">
+                    <input type="text" placeholder="gender" name="gender" value="{{
+                        request.form.gender }}">
+                    <input type="date" placeholder="dd/mm/yyy" name="dateofbirth" value="{{
+                            request.form.dateofbirth}}">
+
+                    <input type="text" placeholder="maritalstatus" name="maritalstatus" value="{{
+                                request.form.maritalstatus }}">
+
+
+    </fieldset>
+
+    <p><button type="submit" class="subbutton" id="postData"><b>submit</button></p>
+
     </div>
     </form>
     </div>
 
-    <div class="response">
-        {% if error %}
-        <p class="error"><strong>Error:</strong> {{ error }}</p>
-        {% endif %}
-    </div>
-    <script>
-    document.getElementById('postData').addEventListener('submit', postData);
-    function postData(event) {
-            event.preventDefault();
 
-            let title = document.getElementById('title').value;
-            let body = document.getElementById('body').value;
 
-            title || body === "" ?
-            alert('Please Enter all details') :
-            fetch('https://jsonplaceholder.typicode.com/posts', {
-                method: 'POST',
-                headers: new Headers(),
-                body: JSON.stringify({ title, body })
-            }).then((res) => res.json())
-                .then((data) => alert('Data Sent'))
-                .catch((err) => console.log(err))
-        }
-    </script>
     </script>

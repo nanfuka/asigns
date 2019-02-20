@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CHURCH-APP</title>
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<style>
+body{
+    background: linear-gradient(to bottom, #f6f1d3, #648880 85%, #293f50);
+    align-items: center; 
+}
+.logs{
+    display: flex;
+    background-color: rgb(24, 14, 1);
+    justify-content: space-evenly;
+    /* align-items: center; */
+    text-align: center;
+    font-family: monospace;
+    font-size: 200%;
+    width: 30%;
+    float: center;
+    margin-left: 36%;
+    color: white;
+    margin-bottom: 10%;
+}
+h1{
+    text-align: center;
+    margin-top: 15%;
+
+}
+.mold{
+    justify-content: center;
+}
+
+.values input{
+    margin-top: 16%;
+    padding-top: 5%;
+    text-align: center;
+
+}
+#username{
+    /* margin-top: 50%; */
+}
+button{
+    width: 100%;
+    
+    color: azure;
+    background-color: rebeccapurple;
+    font-size: 100%;
+    border-block-end-style: outset;
+}
+.response{
+    text-align: center;
+    color:red;
+    background-color: darkblue;
+}
+.pop{
+    text-align: center;
+    color: red;
+}
+</style>
+<body>
+
+    <div class = "mold">
+        <h1>LOGIN-ADMIN</h1>
+        <div class = "pop">
+                {% if error %}
+                <h2 class="error"><strong>Error:</strong> {{ error }}</h2>
+                {% endif %}
+        </div>
+        <div class="logs">
+
+            <div class="keys">
+
+                <p>USERNAME</p>
+                <p>PASSWORD</p>
+            </div>
+
+            <form action="" method="post">
+                <div class="values">
+
+                    <input id = "username" type="text" placeholder="Username" name="username" value="{{
+                    request.form.username }}"><br>
+                    <input type="password" placeholder="password" name="password" value="{{
+                        request.form.password }}">
+                    <p><button type="submit" class="adminlog">Login</button></p>
+                </div>
+            </form>
+        </div>
+
+        </div>
+    </div>
+    

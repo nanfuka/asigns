@@ -1,4 +1,4 @@
-.flex-containerss{
+/* .flex-containerss{
     display: flex;
     background-color: aquamarine;
     align-content: center;
@@ -22,7 +22,8 @@
   font-size: 120%;
 
 }
-h1{
+
+/* h1{
     text-align: center;
 }
 
@@ -58,7 +59,7 @@ button{
     height: 150%;
     color: aliceblue;
     background-color: cornflowerblue;
-    font-size: 150%;
+    font-size: 150%; */
     
 }
 .response{
@@ -75,3 +76,44 @@ button{
 h3{
     text-align: center;
 }
+
+
+.display img{
+    margin-top: 20%;
+}
+.main_views{
+    display: flex;
+}
+.display{
+    background-color: black;
+}
+.vew_col{
+    width: 10%;
+    background-color: blue;
+}
+.response{
+    display: none;
+}
+.values input{
+    width: 10%;
+}
+.foot{
+    display:flex;
+}
+.foot button{
+    width: 20%;
+    margin: 10%;
+    display: none;
+}
+.do{
+    display: flex;
+}
+.des{
+    display: inline;
+}
+.all{
+    margin-left: 50%;
+} 
+fieldset{
+    width: 50%;
+} */

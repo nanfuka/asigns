@@ -45,6 +45,15 @@ class DatabaseConnection:
         self.cursor.execute(query)
         return self.cursor.fetchone()
 
+    def get_details_for_particularuser(self, username):
+
+        # query = "SELECT * FROM incidents WHERE incident_type = '{}' AND incident_id = {};".format(
+        #     incident_type, incident_id)
+
+        query = "SELECT * FROM users WHERE username = '{}';".format(username)
+        self.cursor.execute(query)
+        return self.cursor.fetchone()
+
 if __name__ == '__main__':
     db_name = DatabaseConnection()
     db_name.create_users_table()

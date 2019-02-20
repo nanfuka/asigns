@@ -1,0 +1,12 @@
+body {
+    height: auto;
+    width: auto;
+    background-color: black;
+}
+
+.flex-containerss {
+    display: flex;
+    /* background-color: blueviolet; */
+    background: #648880;
+    background: linear-gradient(to bottom, #f6f1d3, #648880 85%, #293f50);
+    justify-content: center;
