@@ -81,13 +81,37 @@ def signup():
         gender = request.form['gender']
         dateofbirth = request.form['dateofbirth']
         maritalstatus = request.form['maritalstatus']
+
+        churchfamily = request.form['churchfamily']
+        fellowshipgroup = request.form['fellowshipgroup']
+        leadershiprole = request.form['leadershiprole']
+        highestlevelofeducation = request.form['highestlevelofeducation']
+        profession = request.form['profession']
+        occupation = request.form['occupation']
+        placeofwork = request.form['placeofwork']
+
+
+        placeofresidence = request.form['placeofresidence']
+        phonecontact = request.form['phonecontact']
+        emailaddress = request.form['emailaddress']
+        highestlevelofeducation = request.form['highestlevelofeducation']
+        profession = request.form['profession']
+        occupation = request.form['occupation']
+
+        dateofbaptism = request.form['dateofbaptism']
+        placeofbaptism = request.form['placeofbaptism']
+        nameofpastorwhobaptised= request.form['nameofpastorwhobaptised']
+        formerreligion = request.form['formerreligion']
+        profession = request.form['profession']
+        occupation = request.form['occupation']
         er = validate_signup(firstname, lastname, username,
                              gender, dateofbirth, maritalstatus)
+
+
         if er:
             er = er
         else:
-            dbase.create_member(firstname, lastname, username,
-                                gender, dateofbirth, maritalstatus)
+            dbase.create_member(firstname, lastname, username, gender, dateofbirth, maritalstatus,churchfamily, fellowshipgroup, leadershiprole, highestlevelofeducation, profession, occupation, placeofwork, placeofresidence, phonecontact, emailaddress, dateofbaptism, placeofbaptism, nameofpastorwhobaptised,formerreligion)
             return redirect(url_for('upload_file'))
     return render_template('memb_reg.html', error=er)
 
@@ -136,7 +160,21 @@ def view():
                                firstname=data['firstname'],
                                gender=data['gender'],
                                dateofbirth=data['dateofbirth'],
-                               maritalstatus=data['maritalstatus']
+                               maritalstatus=data['maritalstatus'],
+                                churchfamily=data['churchfamily'],
+                                fellowshipgroup=data['fellowshipgroup'],
+                                leadershiprole=data['leadershiprole'],
+                               highestlevelofeducation=data['highestlevelofeducation'],
+                                profession=data['profession'],
+                               occupation=data['occupation'],
+                               placeofwork=data['placeofwork'],
+                               placeofresidence=data['placeofresidence'],
+                               phonecontact=data['phonecontact'],
+                               emailaddress=data['emailaddress'],
+                               dateofbaptism=data['dateofbaptism'],
+                               placeofbaptism=data['placeofbaptism'],
+                               nameofpastorwhobaptised=data['nameofpastorwhobaptised'],
+                               formerreligion=data['formerreligion']
                                )
     all_users = dbase.get_members()
     return render_template('view_members.html', error=error, all_users=all_users)

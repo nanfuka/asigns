@@ -3,9 +3,23 @@
 
 <head>
     <title>CHURCH-APP</title>
-    <link rel="stylesheet" href="../static/css/st.css">
+    <!-- <link rel="stylesheet" href="../static/css/st.css"> -->
 </head>
 <style>
+    .nav1 {
+
+        display: flex;
+        justify-content: space-evenly;
+        background-color: blue;
+        color: white;
+    }
+
+    .nav1 a {
+        float: right;
+        text-decoration: none;
+        color: white;
+    }
+
     fieldset {
         width: 30%;
         margin-left: 34%;
@@ -20,16 +34,26 @@
         background-color: azure;
         font-family: monospace;
         font-size: 160%;
+    }
+
+    h1 {
+        text-align: center;
+    }
 </style>
 
 <body>
-    <div class="flex-containerss">
-        <img src="../static/images/logo.jpg" width="100" height="100">
-        <h1>My Smart Church Application</h1>
-        <a href="{{ url_for('index') }}">
-            <h1>HOME</h1>
-        </a>
-        <a href="{{ url_for('view_member') }}">
+    <div class="nav1">
+        <div><img src="../static/images/logo.jpg" width="100" height="100" alt="NO IMAGE UPLOADED FOR THIS MEMBER"></div>
+        <div>
+            <h1>My Smart Church Application</h1>
+        </div>
+        <div><a href="{{ url_for('index') }}">
+                <h1>home</h1>
+            </a></div>
+        <div><a href="{{ url_for('login') }}">
+                <h1>logout</h1>
+            </a></div>
+        <a href="{{ url_for('member_table') }}">
             <h1>view all members</h1>
         </a>
     </div>
@@ -73,6 +97,81 @@
                     <div>{{ maritalstatus }}</div>
 
                 </div>
+
+                <div class="des">
+                    <div>church family: </div>
+                    <div>{{ churchfamily }}</div>
+
+                </div>
+                <div class="des">
+                    <div>Fellowship group: </div>
+                    <div>{{ fellowshipgroup }}</div>
+
+                </div>
+                <div class="des">
+                    <div>Leadership role: </div>
+                    <div>{{ leadershiprole }}</div>
+
+                </div>
+
+                <div class="des">
+                    <div>Highest Level of Education: </div>
+                    <div>{{ highestlevelofeducation }}</div>
+
+                </div>
+                <div class="des">
+                    <div>Proffession: </div>
+                    <div>{{ profession }}</div>
+
+                </div>
+                <div class="des">
+                    <div>Occupation: </div>
+                    <div>{{ occupation }}</div>
+
+                </div>
+                <div class="des">
+                    <div>Place of work: </div>
+                    <div>{{ placeofwork }}</div>
+
+                </div>
+                <div class="des">
+                    <div>Place Of Residence: </div>
+                    <div>{{ placeofresidence }}</div>
+
+                </div>
+                <div class="des">
+                    <div>Phone Contact: </div>
+                    <div>{{ phonecontact }}</div>
+
+                </div>
+
+                <div class="des">
+                    <div>Email: </div>
+                    <div>{{ emailaddress }}</div>
+
+                </div>
+
+                <div class="des">
+                    <div>Date of baptism: </div>
+                    <div>{{ dateofbaptism }}</div>
+
+                </div>
+
+                <div class="des">
+                    <div>Place of baptism: </div>
+                    <div>{{ placeofbaptism }}</div>
+
+                </div>
+                <div class="des">
+                    <div>Name of Pastor who baptised: </div>
+                    <div>{{ nameofpastorwhobaptised }}</div>
+                </div>
+                <div class="des">
+                    <div>Former Religion: </div>
+                    <div>{{ formerreligion }}</div>
+
+                </div>
         </div>
+    </div>
     </div>
     </fieldset>

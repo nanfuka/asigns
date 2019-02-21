@@ -1,76 +1,140 @@
 <style>
-        body{
+    body {
         text-align: center;
     }
-    .nav1{
-        
+
+    .nav1 {
+
         display: flex;
         justify-content: space-evenly;
         background-color: blue;
         color: white;
     }
-    .nav1 a{
+
+    .nav1 a {
         float: right;
         text-decoration: none;
         color: white;
     }
-    .nav2{
+
+    .nav2 {
         text-decoration: none;
         background-color: rgb(194, 194, 247);
         color: black;
     }
+
     table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  
-}
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-  text-align: center;
-}
+    }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-h1{
-    text-align: center;
-    color:rgb(198, 194, 206);
-    margin-top: 3%;
-}
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        text-align: center;
+    }
 
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    h1 {
+        text-align: center;
+        color: rgb(198, 194, 206);
+        margin-top: 3%;
+    }
+    .myButton {
+        margin-top: 3%;
+        font-size: 100%;
+	-moz-box-shadow: 3px 4px 0px 0px #8a2a21;
+	-webkit-box-shadow: 3px 4px 0px 0px #8a2a21;
+	box-shadow: 3px 4px 0px 0px #8a2a21;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24437));
+	background:-moz-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+	background:-webkit-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+	background:-o-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+	background:-ms-linear-gradient(top, #c62d1f 5%, #f24437 100%);
+	background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24437',GradientType=0);
+	background-color:#c62d1f;
+	-moz-border-radius:18px;
+	-webkit-border-radius:18px;
+	border-radius:18px;
+	border:1px solid #d02718;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #810e05;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f24437), color-stop(1, #c62d1f));
+	background:-moz-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+	background:-webkit-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+	background:-o-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+	background:-ms-linear-gradient(top, #f24437 5%, #c62d1f 100%);
+	background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24437', endColorstr='#c62d1f',GradientType=0);
+	background-color:#f24437;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
 </style>
-                <div class="nav1">
-                        <div><img src="../static/images/logo.jpg" width="100" height="100"></div>
-                        <div>
-                            <h1>My Smart Church Application</h1>
-                        </div>
-                        <div><a href="{{ url_for('index') }}">
-                                <h1>home</h1>
-                            </a></div>
-                        <div><a href="{{ url_for('login') }}">
-                                <h1>logout</h1>
-                            </a></div>
-                    </div>
+<div class="nav1">
+    <div><img src="../static/images/logo.jpg" width="100" height="100"></div>
+    <div>
+        <h1>My Smart Church Application</h1>
+    </div>
+    <div><a href="{{ url_for('index') }}">
+            <h1>home</h1>
+        </a></div>
+    <div><a href="{{ url_for('login') }}">
+            <h1>logout</h1>
+        </a></div>
+</div>
+<a href = "{{ url_for('view') }}"><button class = "myButton">click here to view induvidual profiles</button></a>
 <h1>
-    DETAIL OF MOUNT OLIVES  CHURCH MEMBERS
+    
+    DETAIL OF MOUNT OLIVES CHURCH MEMBERS
 </h1>
 <table>
-        <tr class = "table-head">
-                <td><b>image</td>
-                <td><b>Firstname</td>
-                <td><b>Lastname</td>
-                <td><b>Username</td>
-                <td><b>Dateofbirth</td>
-                
-                <td><b>Marital status</td>
-              </tr>
-        <tr>
+    <tr class="table-head">
+        <td><b>image</td>
+        <td><b>Firstname</td>
+        <td><b>Lastname</td>
+        <td><b>Username</td>
+        <td><b>Dateofbirth</td>
+        <td><b>Marital status</td>
+        <td><b>Church Family</td>
+        <td><b>Fellowship Group</td>
+        <td><b>leadershiprole</td>
+        <!-- education and proffession -->
+        <td><b>Highest Level of Education</td>
+        <td><b>Profession</td>
+        <td><b>Occupation</td>
+        <td><b>PLACE OF WORK</td>
+        <!-- address and contacts -->
+        <td><b>place of residence</td>
+        <td><b>Phone Contact</td>
+        <td><b>Email Address</td>
+        <!-- baptism -->
+        <td><b>Date of Baptism</td>
+        <td><b>Place of Baptism</td>
+        <td><b>Name of Pastor who Baptised</td>
+        <td><b>Former Religion</td>
+    </tr>
+    <tr>
 
-    {%for dat in data%}
+        {%for dat in data%}
 
         <td><img src="../static/images/{{dat.username}}.jpg" alt="logo" class="responsive" width=50px height=50px></td>
         <td>{{dat.firstname}}</td>
@@ -78,6 +142,24 @@ h1{
         <td>{{dat.username}}</td>
         <td>{{dat.dateofbirth}}</td>
         <td>{{dat.maritalstatus}}</td>
+
+        <td>{{dat.churchfamily}}</td>
+            <td>{{dat.fellowshipgroup}}</td>
+            <td>{{dat.leadershiprole}}</td>
+            <!-- education and proffession -->
+            <td>{{dat.highestlevelofeducation}}</td>
+            <td>{{dat.profession}}</td>
+            <td>{{dat.occupation}}</td>
+            <td>{{dat.placeofwork}}</td>
+            <!-- address and contacts -->
+            <td>{{dat.placeofresidence}}</td>
+            <td>{{dat.phonecontact}}</td>
+            <td>{{dat.emailaddress}}</td>
+            <!-- baptism -->
+            <td>{{dat.dateofbaptism}}</td>
+            <td>{{dat.placeofbaptism}}</td>
+            <td>{{dat.nameofpastorwhobaptised}}</td>
+            <td>{{dat.formerreligion}}</td>
 
     </tr>
     {% endfor %}

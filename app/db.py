@@ -16,17 +16,34 @@ class DatabaseConnection:
         print('Connected to the database successfully.')
         print(self.db_name)
         
+    # def create_users_table(self):
+    #     create_users_table = "CREATE TABLE IF NOT EXISTS users\
+    #     (userId SERIAL NOT NULL PRIMARY KEY, firstname VARCHAR NOT NULL, lastname VARCHAR NOT NULL,username VARCHAR NOT NULL, gender VARCHAR NOT NULL, dateofbirth VARCHAR NOT NULL, maritalstatus VARCHAR NOT NULL);"
+    #     self.cursor.execute(create_users_table)
+    #     self.connection.commit()
+
     def create_users_table(self):
-        create_users_table = "CREATE TABLE IF NOT EXISTS users\
-        (userId SERIAL NOT NULL PRIMARY KEY, firstname VARCHAR NOT NULL, lastname VARCHAR NOT NULL,username VARCHAR NOT NULL, gender VARCHAR NOT NULL, dateofbirth VARCHAR NOT NULL, maritalstatus VARCHAR NOT NULL);"
+        create_users_table = "CREATE TABLE IF NOT EXISTS users (userId SERIAL NOT NULL PRIMARY KEY, firstname VARCHAR NOT NULL, lastname VARCHAR NOT NULL,username VARCHAR NOT NULL, gender VARCHAR NOT NULL, dateofbirth VARCHAR NOT NULL, maritalstatus VARCHAR NOT NULL,churchfamily VARCHAR, fellowshipgroup VARCHAR, leadershiprole VARCHAR, highestlevelofeducation VARCHAR, profession VARCHAR, occupation VARCHAR, placeofwork VARCHAR, placeofresidence VARCHAR, phonecontact VARCHAR, emailaddress VARCHAR, dateofbaptism VARCHAR, placeofbaptism VARCHAR, nameofpastorwhobaptised VARCHAR, formerreligion VARCHAR);"      
         self.cursor.execute(create_users_table)
         self.connection.commit()
+
+    # def create_users_table(self):
+    #     create_users_table = "CREATE TABLE IF NOT EXISTS users\
+    #     (userId SERIAL NOT NULL PRIMARY KEY, firstname VARCHAR NOT NULL, lastname VARCHAR NOT NULL,username VARCHAR NOT NULL, gender VARCHAR NOT NULL, dateofbirth VARCHAR NOT NULL, maritalstatus VARCHAR NOT NULL);"
+    #     self.cursor.execute(create_users_table)
+    #     self.connection.commit()
+
+    # def create_users_table(self):
+    #     create_users_table = "CREATE TABLE IF NOT EXISTS users\
+    #     (userId SERIAL NOT NULL PRIMARY KEY, firstname VARCHAR NOT NULL, lastname VARCHAR NOT NULL,username VARCHAR NOT NULL, gender VARCHAR NOT NULL, dateofbirth VARCHAR NOT NULL, maritalstatus VARCHAR NOT NULL);"
+    #     self.cursor.execute(create_users_table)
+    #     self.connection.commit()
     
 
-    def create_member(self, firstname, lastname, username, gender, dateofbirth, maritalstatus):
-        query = """ INSERT INTO users (firstname, lastname, username, gender, dateofbirth, maritalstatus) VALUES ('{}', '{}', '{}', '{}','{}', '{}') 
-                RETURNING userid, firstname, lastname, username, gender, dateofbirth;"""\
-                .format(firstname, lastname, username, gender, dateofbirth, maritalstatus)
+    def create_member(self, firstname, lastname, username, gender, dateofbirth, maritalstatus, churchfamily, fellowshipgroup, leadershiprole, highestlevelofeducation, profession, occupation, placeofwork, placeofresidence, phonecontact, emailaddress, dateofbaptism, placeofbaptism, nameofpastorwhobaptised, formerreligion):
+        query = """ INSERT INTO users (firstname, lastname, username, gender, dateofbirth, maritalstatus, churchfamily, fellowshipgroup, leadershiprole, highestlevelofeducation, profession, occupation, placeofwork, placeofresidence, phonecontact, emailaddress, dateofbaptism, placeofbaptism, nameofpastorwhobaptised, formerreligion) VALUES ('{}', '{}', '{}', '{}','{}', '{}', '{}', '{}', '{}','{}', '{}', '{}', '{}', '{}','{}', '{}', '{}', '{}', '{}','{}') 
+                RETURNING firstname, lastname, username, gender, dateofbirth, maritalstatus, churchfamily, fellowshipgroup, leadershiprole, highestlevelofeducation, profession, occupation, placeofwork, placeofresidence, phonecontact, emailaddress, dateofbaptism, placeofbaptism, nameofpastorwhobaptised, formerreligion;"""\
+                .format(firstname, lastname, username, gender, dateofbirth, maritalstatus, churchfamily, fellowshipgroup, leadershiprole, highestlevelofeducation, profession, occupation, placeofwork, placeofresidence, phonecontact, emailaddress, dateofbaptism, placeofbaptism, nameofpastorwhobaptised, formerreligion)
         self.cursor.execute(query)
         return self.cursor.fetchone()
 

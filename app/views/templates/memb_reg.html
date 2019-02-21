@@ -30,25 +30,30 @@
         display: flex;
         justify-content: center;
     }
+    .values{
+        margin-top: 18%;
+    }
     .values input{
         display: block;
-        margin-top: 20%;
-        margin-left: 11%;
-        font-size: 120%;
+        margin-bottom: 19%;
+        margin-left: 5%;
+        font-size: 150%;
         text-align: center;
     }
     .keys{
-        margin-top: 5%;
-        font-size: 120%;
+        margin-top: 3%;
+    
+        font-size: 150%;
+        text-transform: uppercase;
     }
     .keys p{
-        margin-bottom: 33.5%; 
-        
+        margin-bottom: 16%; 
+        margin-top: 5%;
         text-align-last: left;
         display: block;
     }
     fieldset{
-        width: 40%;
+        width: 50%;
         margin-left: 28%;
     }
     button{
@@ -171,44 +176,21 @@
                 <p><b>Highest Level of Education</p>
                 <p><b>Profession</p>
                 <p><b>Occupation</p>
-                <p><b>GENDER</p>
-                <p><b>DATE OF BIRTH</p>
-                <p><b>MARITAL STATUS</p>
+                <p><b>PLACE OF WORK</p>
+                <!-- address and contacts -->
+                <p><b>place of residence</p>
+                <p><b>Phone Contact</p>
+                <p><b>Email Address</p>
+                <!-- baptism -->
+                <p><b>Date of Baptism</p>
+                <p><b>Place of Baptism</p>
+                <p><b>Name of Pastor who Baptised</p>
+                <p><b>Former Religion</p>
+
+
 
 
             </div>
-
-            <P>EDUCATION AND PROFFESSION</P>
-            Highest Level of Education:<br>
-            <input type="text" name="highestlevelofeducation"><br>
-            Profession:<br>
-            <input type="text" name="profession"><br>
-            Occupation:<br>
-            <input type="text" name="occupation"><br>
-            Place of Work:<br>
-            <input type="text" name="placeofwork"><br>
-            <P>ADDRESS AND CONTACT</P>
-            Place of Residence:<br>
-            <input type="text" name="placeofresidence"><br>
-            Phone Contact:<br>
-            <input type="text" name="phonecontact"><br>
-            Email Address:<br>
-            <input type="text" name="emailaddress"><br>
-            <P>BAPTISM</P>
-            Date of Baptism:<br>
-            <input type="text" name="dateofbaptism"><br>
-            Place of Baptism:<br>
-            <input type="text" name="placeofbaptism"><br>
-            Name of Pastor who Baptised:<br>
-            <input type="text" name="name_of_pastor_who Baptised"><br>
-            Former Religion:<br>
-            <input type="text" name="former_religion"><br>
-            Image url:<br>
-            <input type="text" name="image_url"><br>
-            </tr>
-
-
-
             <form action="" method="post">
                 <div class="values">
 
@@ -226,6 +208,51 @@
 
                     <input type="text" placeholder="maritalstatus" name="maritalstatus" value="{{
                                 request.form.maritalstatus }}">
+
+                    <!-- church family and fellowship -->
+
+                    <input type="text" placeholder="churchfamily" name="churchfamily" value="{{
+                                    request.form.churchfamily}}">
+
+                    <input type="text" placeholder="fellowshipgroup" name="fellowshipgroup" value="{{
+                                        request.form.fellowshipgroup }}">
+                    <input type="text" placeholder="leadershiprole" name="leadershiprole" value="{{
+                                request.form.leadershiprole }}">
+
+                    <!-- education and proffession -->
+
+                    <input type="text" placeholder="highestlevelofeducation" name="highestlevelofeducation" value="{{
+                                    request.form.highestlevelofeducation }}">
+                    <input type="text" placeholder="profession" name="profession" value="{{
+                                        request.form.profession }}">
+                    <input type="text" placeholder="occupation" name="occupation" value="{{
+                                            request.form.occupation }}">
+                    <input type="text" placeholder="placeofwork" name="placeofwork" value="{{
+                                                request.form.placeofwork }}">
+
+                    <!-- address and contact -->
+
+                    <input type="text" placeholder="placeofresidence" name="placeofresidence" value="{{
+                            request.form.placeofresidence}}">
+                    <input type="text" placeholder="phonecontact" name="phonecontact" value="{{
+                                request.form.phonecontact }}">
+                    <input type="text" placeholder="emailaddress" name="emailaddress" value="{{
+                                    request.form.emailaddress }}">
+                    <!-- <input type="text" placeholder="placeofwork" name="placeofwork" value="{{
+                                        request.form.placeofwork }}"> -->
+
+                                                        <!-- baptism -->
+
+
+                        <input type="text" placeholder="dateofbaptism" name="dateofbaptism" value="{{
+                            request.form.dateofbaptism}}">
+                    <input type="text" placeholder="placeofbaptism" name="placeofbaptism" value="{{
+                                request.form.placeofbaptism }}">
+                    <input type="text" placeholder="nameofpastorwhobaptised" name="nameofpastorwhobaptised" value="{{
+                                    request.form.nameofpastorwhobaptised }}">
+                    <input type="text" placeholder="formerreligion" name="formerreligion" value="{{
+                                        request.form.formerreligion }}">
+
 
 
     </fieldset>
