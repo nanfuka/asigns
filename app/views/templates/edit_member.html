@@ -80,6 +80,9 @@
         text-decoration: none;
         color: white;
     }
+    form{
+        margin-top:10%;
+    }
     </style>
         <div class="nav1">
                 <div><img src="../static/images/logo.jpg" width="100" height="100"></div>
@@ -101,67 +104,24 @@
         <div><a href="{{ url_for('login') }}"><button  class = "myButton"> logout</button></a></div>
         <div><a href="{{ url_for('view') }}"><button  class = "myButton">search for members profiles</button></a></div>
     </div>
-    <div class="response">
-            {% if error %}
-            <p class="error"><strong><b>!!!!!!!!!!Error:</strong> {{ error }}</p>
-            {% endif %}
-        </div>
-    <form action="" method="post">
-        <div class="nav4">
-            <!-- <div class="row2">
-                <div class="values"> -->
-            <div>Search for member</div>
-            <div><input type="text" id="ajax" list="json-datalist" placeholder="enter name of member" name="username"
-                    value="{{
-                    request.form.username}}"></div>
-            <datalist id="json-datalist"></datalist>
+<form action="" method="post">
+enter userId 
 
-            <div class="row22"><button type="submit" class="adminlog" id="postData">view</button></div>
+<input type="number" placeholder="id" name="userId" value="{{
+    request.form.userId}}">
 
+select attribute to edit
+<!-- <select>
+        <option name="item" value="{{request.form.item }}">username</option>
+        <option name="item" value="{{request.form.item }}">firstname</option>
+        <option name="item" value="{{request.form.item }}">lastname</option>
+        <option name="item" value="{{request.form.item }}">dateofbirth</option>
+      </select> -->
+<input type="text" placeholder="item" name="item" value="{{
+        request.form.item }}">
 
-        </div>
-        </div>
-    </form>
-    </nav4>
-<div class = "reply"></div>
+insert new value
+<input type="text" placeholder="newvalue" name="newvalue" value="{{
+request.form.newvalue }}">
+<button type="submit">submit</button>
 
-
-
-    <script>
-        var dataList = document.getElementById('json-datalist');
-        var input = document.getElementById('ajax');
-        var request = new XMLHttpRequest();
-
-        request.onreadystatechange = function (response) {
-            if (request.readyState === 4) {
-                if (request.status === 200) {
-
-                    var jsonOptions = JSON.parse(request.responseText);
-                    
-
-                    jsonOptions.forEach(function (item) {
-
-                        var option = document.createElement('option');
-                        option.value = item.username;
-                        dataList.appendChild(option);
-
-                    });
-
-                } else {
-                    console.log("Failed to load datalist options");
-                    document.getElementById("reply").innerHTML = "we have no such users on our system"
-                }
-                for (var i=0; i<datalist.options.length; i++){
-                    if (input.value!=datalist.option[i].value){
-                        document.getElementById("reply").innerHTML = "we have no such users on our system"
-
-
-                    }
-                }
-               
-            }
-        };
-
-        request.open('GET', 'http://127.0.0.1:5000/fetch_user', true);
-        request.send();
-    </script>

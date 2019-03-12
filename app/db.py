@@ -70,6 +70,22 @@ class DatabaseConnection:
         query = "SELECT * FROM users WHERE username = '{}';".format(username)
         self.cursor.execute(query)
         return self.cursor.fetchone()
+    def edit_data(self, userId, item, newvalue):
+        query = """UPDATE users SET {} = '{}'  WHERE userId = {}  RETURNING userId;""".format(item, newvalue, userId)
+        self.cursor.execute(query)
+        return self.cursor.fetchone()
+    def delete_member(self, username):
+        query = "DELETE * FROM users WHERE username = '{}';".format(username)
+    def get_all_user_ids():
+        query = "SELECT userId from users"
+        self.cursor.execute(query)
+        return self.cursor.fetchall()
+
+    def get_all_usernames():
+        query = "SELECT username from users"
+        self.cursor.execute(query)
+        return self.cursor.fetchall()
+
 
 if __name__ == '__main__':
     db_name = DatabaseConnection()

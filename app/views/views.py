@@ -90,7 +90,6 @@ def signup():
         occupation = request.form['occupation']
         placeofwork = request.form['placeofwork']
 
-
         placeofresidence = request.form['placeofresidence']
         phonecontact = request.form['phonecontact']
         emailaddress = request.form['emailaddress']
@@ -100,18 +99,18 @@ def signup():
 
         dateofbaptism = request.form['dateofbaptism']
         placeofbaptism = request.form['placeofbaptism']
-        nameofpastorwhobaptised= request.form['nameofpastorwhobaptised']
+        nameofpastorwhobaptised = request.form['nameofpastorwhobaptised']
         formerreligion = request.form['formerreligion']
         profession = request.form['profession']
         occupation = request.form['occupation']
         er = validate_signup(firstname, lastname, username,
                              gender, dateofbirth, maritalstatus)
 
-
         if er:
             er = er
         else:
-            dbase.create_member(firstname, lastname, username, gender, dateofbirth, maritalstatus,churchfamily, fellowshipgroup, leadershiprole, highestlevelofeducation, profession, occupation, placeofwork, placeofresidence, phonecontact, emailaddress, dateofbaptism, placeofbaptism, nameofpastorwhobaptised,formerreligion)
+            dbase.create_member(firstname, lastname, username, gender, dateofbirth, maritalstatus, churchfamily, fellowshipgroup, leadershiprole, highestlevelofeducation,
+                                profession, occupation, placeofwork, placeofresidence, phonecontact, emailaddress, dateofbaptism, placeofbaptism, nameofpastorwhobaptised, formerreligion)
             return redirect(url_for('upload_file'))
     return render_template('memb_reg.html', error=er)
 
@@ -139,10 +138,10 @@ def view_profile():
     return render_template('profile.html')
 
 
-def validate_search(username):
-    if not dbase.get_details_for_particularuser(username):
-        # if not username or not isalpha(username):
-        return "Enter a valid username in the input box"
+# def validate_search(username):
+#     if not dbase.get_details_for_particularuser(username):
+#         # if not username or not isalpha(username):
+#         return "Enter a valid username in the input box"
 
 
 @app.route('/fetch_them',  methods=['GET', 'POST'])
@@ -150,32 +149,34 @@ def view():
     error = None
     if request.method == 'POST':
         username = request.form['username']
-        error = validate_search(username)
-        if error:
-            error = error
+        # error = validate_search(username)
+        # if error:
+        #     error = error
+        if dbase.get_details_for_particularuser(username):
 
-        data = dbase.get_details_for_particularuser(username)
-        return render_template('profile.html', username=data['username'],
-                               lastname=data['lastname'],
-                               firstname=data['firstname'],
-                               gender=data['gender'],
-                               dateofbirth=data['dateofbirth'],
-                               maritalstatus=data['maritalstatus'],
-                                churchfamily=data['churchfamily'],
-                                fellowshipgroup=data['fellowshipgroup'],
-                                leadershiprole=data['leadershiprole'],
-                               highestlevelofeducation=data['highestlevelofeducation'],
-                                profession=data['profession'],
-                               occupation=data['occupation'],
-                               placeofwork=data['placeofwork'],
-                               placeofresidence=data['placeofresidence'],
-                               phonecontact=data['phonecontact'],
-                               emailaddress=data['emailaddress'],
-                               dateofbaptism=data['dateofbaptism'],
-                               placeofbaptism=data['placeofbaptism'],
-                               nameofpastorwhobaptised=data['nameofpastorwhobaptised'],
-                               formerreligion=data['formerreligion']
-                               )
+            data = dbase.get_details_for_particularuser(username)
+            return render_template('profile.html', error=error, username=data['username'],
+                                   lastname=data['lastname'],
+                                   firstname=data['firstname'],
+                                   gender=data['gender'],
+                                   dateofbirth=data['dateofbirth'],
+                                   maritalstatus=data['maritalstatus'],
+                                   churchfamily=data['churchfamily'],
+                                   fellowshipgroup=data['fellowshipgroup'],
+                                   leadershiprole=data['leadershiprole'],
+                                   highestlevelofeducation=data['highestlevelofeducation'],
+                                   profession=data['profession'],
+                                   occupation=data['occupation'],
+                                   placeofwork=data['placeofwork'],
+                                   placeofresidence=data['placeofresidence'],
+                                   phonecontact=data['phonecontact'],
+                                   emailaddress=data['emailaddress'],
+                                   dateofbaptism=data['dateofbaptism'],
+                                   placeofbaptism=data['placeofbaptism'],
+                                   nameofpastorwhobaptised=data['nameofpastorwhobaptised'],
+                                   formerreligion=data['formerreligion']
+                                   )
+        error = "In mount Olives database, we have no one registered with that username yet"
     all_users = dbase.get_members()
     return render_template('view_members.html', error=error, all_users=all_users)
 
@@ -204,6 +205,31 @@ def upload_file():
             return redirect(url_for('signup',
                                     filename=filename, data=data))
     return render_template('im.html', data=data)
+
+
+@app.route('/edit_data', methods=['GET', 'POST'])
+def edit_data():
+    era = None
+    if request.method == 'POST':
+        # image = request.form['image']
+        userId = request.form['userId']
+        item = request.form['item']
+        newvalue = request.form['newvalue']
+        dbase.edit_data(userId, item, newvalue)
+        return render_template('membership.html')
+    return render_template('edit_member.html')
+
+@app.route('/delete_data', methods=['GET', 'POST'])
+def delete_data():
+    noname = None
+    if request.method == 'POST':
+        # image = request.form['image']
+        username = request.form['username']
+        if dbase.get_details_for_particularuser(username):
+            dbase.delete_member(username)
+            return render_template('membership.html')
+        noname = "invalid username, please look at the members table, copy the name whose data you wish to delete and paste it here"
+    return render_template('delete_member.html', noname = noname)
 
 
 # @app.route('/im', methods=['GET', 'POST'])
